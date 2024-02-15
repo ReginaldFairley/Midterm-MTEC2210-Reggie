@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     float turboSpeed = 10;
     float currentSpeed;
 
-    public SpirteRenderer sr;
+    //public SpirteRenderer sr;
 
     // Start is called before the first frame update
     void Start()
