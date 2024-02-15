@@ -34,4 +34,15 @@ public class PlayerMovement : MonoBehaviour
         transform.Translate(xMove * currentSpeed * Time.deltaTime, yMove * currentSpeed * Time.deltaTime, 0);
 
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+	{
+        if (collision.tag == "Fire")
+		{
+            Destroy(gameObject);
+        }
+       
+	}
+
+
 }
