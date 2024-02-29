@@ -7,13 +7,15 @@ public class PlayerMovement : MonoBehaviour
     float speed = 5;
     float turboSpeed = 10;
     float currentSpeed;
-    float deleteme = 1.5f;
+    public AudioClip clip;
+    AudioSource audioSource;
+    public GameManager gm;
 
-    //public SpirteRenderer sr;
 
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         //sr = GetComponent<SpriteRenderer<();
     }
 
@@ -41,16 +43,11 @@ public class PlayerMovement : MonoBehaviour
 	{
         if (collision.tag == "Fire")
 		{
+            gm.PlayDeathSound();
+            //audioSource.PlayOneShot(clip);
             Destroy(gameObject);
         }
-       
+
 	}
-
-    private class Spawner : MonoBehaviour
-    {
-        public GameObject gameObject;
-
-        public GameObject Spawn() => Instantiate(gameObject);
-    }
 
 }

@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     [Range (1,10)]public int cointCount = 5;
     int currentCoinCount = 0;
 
+    public AudioSource audioSource;
+    public AudioClip deathClip;
     private void Start()
     {
         //SpawnCoin();
@@ -45,6 +47,11 @@ public class GameManager : MonoBehaviour
             currentCoinCount++;
         }
 
+    }
+
+    public void PlayDeathSound()
+    {
+        audioSource.PlayOneShot(deathClip);
     }
 
     private Vector2 SpawnPos()
