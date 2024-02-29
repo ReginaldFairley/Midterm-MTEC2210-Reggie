@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     float speed = 5;
     float turboSpeed = 10;
     float currentSpeed;
+    float deleteme = 1.5f;
 
     //public SpirteRenderer sr;
 
@@ -32,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
         float xMove = Input.GetAxisRaw("Horizontal");
         float yMove = Input.GetAxisRaw("Vertical");
         transform.Translate(xMove * currentSpeed * Time.deltaTime, yMove * currentSpeed * Time.deltaTime, 0);
+    
 
     }
 
@@ -44,5 +46,11 @@ public class PlayerMovement : MonoBehaviour
        
 	}
 
+    private class Spawner : MonoBehaviour
+    {
+        public GameObject gameObject;
+
+        public GameObject Spawn() => Instantiate(gameObject);
+    }
 
 }
