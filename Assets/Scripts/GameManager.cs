@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        //Timer
+        //Timer3
         if (timeElapsed < coinSpawnDelay)
         {
             timeElapsed += Time.deltaTime;
@@ -56,9 +56,10 @@ public class GameManager : MonoBehaviour
 
     private Vector2 SpawnPos()
     {
-        float xValue = Random.Range(westPoint.position.x, Screen.width);
-        float yValue = Random.Range(northPoint.position.y, Screen.height);
-        Vector2 temp = new Vector2(xValue, yValue);
+        float xValue = Random.Range(westPoint.position.x, eastPoint.position.x);
+        float yValue = northPoint.position.y;
+        //int zValue = 1;
+        Vector3 temp = new Vector3(xValue, yValue, 0);
         //return new Vector2(xValue,yValue);
 
         return temp;

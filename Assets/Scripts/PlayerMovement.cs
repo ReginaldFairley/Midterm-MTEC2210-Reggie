@@ -48,6 +48,11 @@ public class PlayerMovement : MonoBehaviour
             Destroy(gameObject);
         }
 
+        else if (collision.tag == "Banana")
+        {
+            Destroy(collision.gameObject);
+        }
+
 	}
 
 }
