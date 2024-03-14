@@ -8,6 +8,7 @@ public class item : MonoBehaviour
     public float maxSpeed = -10f;
     private float fallingSpeed;
 
+    public int value;
 
     // Start is called before the first frame update
     private void Start()

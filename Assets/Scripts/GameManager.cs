@@ -1,19 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject coinPrefab;
+    public GameManager gm;
+
+    public GameObject[] Item;
+    public GameObject[] Fire;
+    public GameObject[] Transporter;
+
+    public TextMeshPro score;
+    public int point;
+
+    public GameObject[] Collectibles;
+
+    
     public Transform northPoint;
     public Transform southPoint;
     public Transform westPoint;
     public Transform eastPoint;
 
-    public float coinSpawnDelay = 2;
+    public float SpawnDelay = 1;
     float timeElapsed = 0;
 
-    [Range (1,10)]public int cointCount = 5;
+    [Range (1,100)]public int cointCount = 100;
     int currentCoinCount = 0;
 
     public AudioSource audioSource;
@@ -27,7 +40,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         //Timer3
-        if (timeElapsed < coinSpawnDelay)
+        if (timeElapsed < SpawnDelay)
         {
             timeElapsed += Time.deltaTime;
         }
@@ -36,16 +49,19 @@ public class GameManager : MonoBehaviour
             SpawnCoin();
             timeElapsed = 0;
         }
-        
+
+        score.text = "Score: " + point.ToString();
+    }
+
+    public void AdjustScore(int value)
+    {
+        point += value;
     }
 
     public void SpawnCoin()
     {
-        if (currentCoinCount < cointCount)
-        {
-            GameObject coinClone = Instantiate(coinPrefab, SpawnPos(), Quaternion.identity);
-            currentCoinCount++;
-        }
+        int randomIndex = Random.Range(0, Collectibles.Length);
+        Instantiate(Collectibles[randomIndex], SpawnPos(), Quaternion.identity);
 
     }
 
